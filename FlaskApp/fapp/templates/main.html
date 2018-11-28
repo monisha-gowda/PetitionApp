@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>PetitioNIE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#0000;">
+  <a class="navbar-brand" href="#">PetitioNIE</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+  <li class="nav-item dropdown">
+      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        More
+      </a>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+        <a class="dropdown-item active" href="">About</a>
+        <a class="dropdown-item" href="#">LOGOUT</a>
+      </div>
+    </li>
+  </ul>
+
+</nav>
+
+<!-- Header -->
+<header class="w3-container w3-red w3-center" style="padding:128px 16px">
+  <h1 class="w3-margin w3-jumbo">PetitioNIE</h1>
+  <p class="w3-xlarge">Vote for Change</p>
+  <form method="POST">
+    <div class="form-group">
+      <input type="text" class="form-control col-lg-10 col-sm-10" name="USN" placeholder="USN" required="required" value="{{ request.form.usn }}">
+    </div>
+    <div class="form-group">
+      <input type="password" class="form-control col-lg-10 col-sm-10" name="password" placeholder="Password" required="required" value="{{ request.form.password }}">
+    </div>
+    <div><input class="btn" type="submit" value="SIGNIN"></div>
+    </form>
+  <div>
+<!--  <button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">SIGN IN</button>-->
+
+  <h4>Don't have an account?</h4>
+  <a href="/signup/"><button class="w3-button w3-black w3-padding-large w3-large w3-margin-top">SIGN UP</button></a>
+  </div>
+  <p>{{ error }}</p>
+
+</header>
+
+</body>
+</html>

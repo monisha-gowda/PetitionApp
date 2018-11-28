@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% if title %}
+<title>{{ title }}</title>
+{% else %}
+<title>PetitoNie</title>
+{% endif %}
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+{% block links %}
+{% endblock links %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css">
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+{% block style %}
+{% endblock style %}
+</head>
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<body>
+
+
+
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+      <a class="navbar-brand" href="{{ url_for('allview') }}"><img src="/static/logo.png" alt="PetitioNie" width="240" height="55">
+            </a>
+  <div class="collapse navbar-collapse" id="navbarToggle">
+    <div class="navbar-nav mr-auto">
+    </div>
+
+    <!-- Navbar Right Side -->
+     <div class="navbar-nav">
+      {% if current_user.is_authenticated %}
+        <a class="nav-item nav-link" href="{{ url_for('account') }}"><h4><strong>MY ACCOUNT</strong></h4></a>
+        <a class="nav-item nav-link" href="{{ url_for('logout') }}"><h4><strong>LOGOUT</strong><h4></a>
+        {% else %}
+      <a class="nav-item nav-link" href="{{ url_for('login') }}"><h4><strong>LOGIN</strong></h4></a>
+      <a class="nav-item nav-link" href="{{ url_for('register') }}"><h4><strong>REGISTER</strong></h4></a>
+      {% endif %}
+    </div>
+    </div>
+    </li>
+  </ul>
+
+</nav>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+  {% for category, message in messages %}
+    <div class="alert alert-{{ category }}">
+      {{ message }}
+    </div>
+  {% endfor %}
+{% endif %}
+{% endwith %}
+{% block content %}
+{% endblock %}
+</body>
+</html>

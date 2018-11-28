@@ -1,0 +1,9 @@
+{% extends 'header.html' %}
+
+{% block content %}
+    {% for petition in petitions %}
+    <h1>{{ petition.number }}</h1>
+    <h2>Title: {{ petition.name }}</h2>
+    <p>{{ petition.content }}</p>
+    {% endfor %}
+{% endblock content %}

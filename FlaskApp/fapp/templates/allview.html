@@ -1,0 +1,79 @@
+{% extends 'header.html' %}
+
+{% block content %}
+
+<!-- Header -->
+<header class="w3-container w3-center" style="padding:200px 200px 200px 200px;height:600px;background-image:url('/static/back.jpg');background-size:100% 100%;text-align: center;">
+  <h1 style="font:Amaranath;"><strong>NIE's Platform for CHANGE</strong></h1>
+  <br>
+  <div class="container"><a href="{{ url_for('new_petition') }}"><button type="button" class="btn btn-dark btn-lg" name="button" ><strong>START PETITION</strong></button></a></div>
+</header>
+<hr>
+
+
+
+  <div class="container">
+
+      {% for petition in petitions %}
+
+      <div class="row jumbotron">
+        <div class="col-md-7">
+          <a href="{{ url_for('petition',petition_id=petition.id) }}">
+            <img class="img-fluid rounded mb-4 mb-md-0" src="{{ url_for('static',filename = 'petition_pics/' + petition.image_post) }}" alt="">
+          </a>
+        </div>
+        <div class="col-md-5">
+          <h2 class="card-title">
+          <a href="{{ url_for('petition',petition_id=petition.id) }}">{{ petition.title }}</a></h2>
+          <h4>{{ petition.date_posted.strftime('%Y-%m-%d') }}</h4>
+          <br>
+          <a class="btn btn-primary btn-lg" href="{{ url_for('petition',petition_id=petition.id) }}">View Petition</a>
+        </div>
+      </div>
+
+      <hr>
+      {% endfor %}
+
+      <!-- /.row -->
+
+      <!-- Pagination -->
+      <ul class="pagination justify-content-center">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            <span class="sr-only">Previous</span>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">1</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">2</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#">3</a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            <span class="sr-only">Next</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; PetitioNIE 2018</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+{% endblock content %}
